@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import App.Bank.Entity.Account;
 import App.Bank.Service.AccountService;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,5 +36,11 @@ public class AccountController {
     public Account withdraw(@PathVariable Long id, @RequestBody Map<String, Double> request) {
         Double amount = request.get("amount");
         return accountService.withdraw(id, amount);
+    }
+
+    @GetMapping("accountlist")
+    public List<Account> getAllAccount()
+    {
+        return accountService.getAllAccount();
     }
 }
